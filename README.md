@@ -62,17 +62,10 @@ git clone https://github.com/<your-github>/WalmartRViewAssessment.git
 
 ---
 
-- Project structure and how the architecture is organized
-- How data is loaded and displayed
-- Error handling (e.g., if no internet)
-- Mention rotation support via ViewModel + StateFlow
-
----
-
 ## ✅ Things to Note
 
 - No third-party architecture libraries were used to keep it simple and self-contained.
-- Code is modular and easy to test or extend (e.g., add search/sort/pagination).
+- Code is modular and easy to test or extend, for a larger project, ViewBinding could be introduced to improve type safety and reduce boilerplate.
 - UI is clean and adaptive to screen size.
 
 ---

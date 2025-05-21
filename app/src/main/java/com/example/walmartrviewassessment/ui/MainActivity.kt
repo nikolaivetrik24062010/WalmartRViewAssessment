@@ -1,16 +1,12 @@
-package com.example.walmartrviewassessment
+package com.example.walmartrviewassessment.ui
 
 import android.os.Bundle
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.walmartrviewassessment.ui.CountryAdapter
-import com.example.walmartrviewassessment.ui.CountryViewModel
+import com.example.walmartrviewassessment.R
 
 class MainActivity : AppCompatActivity() {
 

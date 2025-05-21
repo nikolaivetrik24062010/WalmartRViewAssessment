@@ -23,7 +23,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Country, Region"
+                android:text="@string/country_region"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
@@ -31,7 +31,7 @@
                 android:id="@+id/tvCode"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="US"
+                android:text="@string/us"
                 android:textSize="16sp"
                 android:textStyle="bold" />
         </LinearLayout>
@@ -41,7 +41,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="Capital"
+            android:text="@string/capital"
             android:textSize="14sp" />
 
     </LinearLayout>

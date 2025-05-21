@@ -1,6 +1,5 @@
 package com.example.walmartrviewassessment.ui
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -17,19 +16,22 @@ class CountryViewModel : ViewModel() {
     private val _error = MutableLiveData<String?>()
     val error: LiveData<String?> = _error
 
+    val isLoading = MutableLiveData<Boolean>()
+
     init {
         fetchCountries()
     }
 
     private fun fetchCountries() {
         viewModelScope.launch {
+            isLoading.value = true
             try {
                 val response = RetrofitInstance.api.getCountries()
                 _countries.value = response
-                Log.d("CountryViewModel", "Fetched countries: ${response.size}")
             } catch (e: Exception) {
-                _error.value = "Error: ${e.localizedMessage}"
-                Log.e("CountryViewModel", "Error: ${e.message}")
+                _error.value = e.localizedMessage
+            } finally {
+                isLoading.value = false
             }
         }
     }

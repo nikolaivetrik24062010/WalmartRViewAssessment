@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">WalmartRViewAssessment</string>
+    <string name="no_countries_available">No countries available.</string>
+    <string name="country_region">Country, Region</string>
+    <string name="us">US</string>
+    <string name="capital">Capital</string>
 </resources>

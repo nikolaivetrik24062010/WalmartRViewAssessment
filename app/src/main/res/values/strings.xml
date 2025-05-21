@@ -4,4 +4,7 @@
     <string name="country_region">Country, Region</string>
     <string name="us">US</string>
     <string name="capital">Capital</string>
+    <string name="retry">Retry</string>
+    <string name="load_error">Failed to load data: %1$s</string>
+    <string name="empty_message">Empty Message</string>
 </resources>

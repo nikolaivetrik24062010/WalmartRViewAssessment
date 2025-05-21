@@ -2,6 +2,7 @@ package com.example.walmartrviewassessment.ui
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Button
 import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
@@ -22,6 +23,7 @@ class MainActivity : AppCompatActivity() {
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
         val progressBar = findViewById<ProgressBar>(R.id.progressBar)
         val emptyView = findViewById<TextView>(R.id.tvEmpty)
+        val btnRetry = findViewById<Button>(R.id.btnRetry)
         recyclerView.layoutManager = LinearLayoutManager(this)
 
         viewModel = ViewModelProvider(this)[CountryViewModel::class.java]
@@ -38,13 +40,21 @@ class MainActivity : AppCompatActivity() {
         }
 
         viewModel.error.observe(this) { error ->
-            error?.let {
-                Toast.makeText(this, "Failed to load data: $it", Toast.LENGTH_LONG).show()
+            if (error != null) {
+                Toast.makeText(this, getString(R.string.load_error, error), Toast.LENGTH_LONG)
+                    .show()
+                btnRetry.visibility = View.VISIBLE
+            } else {
+                btnRetry.visibility = View.GONE
             }
         }
 
         viewModel.isLoading.observe(this) { isLoading ->
             progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
+        }
+
+        btnRetry.setOnClickListener {
+            viewModel.fetchCountries()
         }
     }
 }

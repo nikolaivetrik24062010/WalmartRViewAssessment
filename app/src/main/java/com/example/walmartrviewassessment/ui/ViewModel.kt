@@ -18,21 +18,22 @@ class CountryViewModel : ViewModel() {
 
     val isLoading = MutableLiveData<Boolean>()
 
-    init {
-        fetchCountries()
-    }
-
-    private fun fetchCountries() {
+    fun fetchCountries() {
         viewModelScope.launch {
             isLoading.value = true
             try {
                 val response = RetrofitInstance.api.getCountries()
                 _countries.value = response
+                _error.value = null
             } catch (e: Exception) {
                 _error.value = e.localizedMessage
             } finally {
                 isLoading.value = false
             }
         }
+    }
+
+    init {
+        fetchCountries()
     }
 }

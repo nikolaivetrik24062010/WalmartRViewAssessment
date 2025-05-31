@@ -31,8 +31,8 @@ This app follows the MVVM architecture and a layered approach:
 
 - ui
   - MainActivity.kt
-  - ViewModel.kt
-  - CountryAdapter.kt
+  - country/ViewModel.kt
+  - country/CountryAdapter.kt
 
 ```
 
@@ -75,7 +75,6 @@ git clone https://github.com/<your-github>/WalmartRViewAssessment.git
 **Nikolay Vetrik**  
 📧 nikolaivetrikdev@gmail.com  
 📱 (916) 595-7260  
-🔗 [GitHub](https://github.com/nikolaivetrik24062010)
 
 ---
 

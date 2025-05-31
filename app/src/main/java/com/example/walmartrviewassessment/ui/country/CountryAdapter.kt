@@ -1,15 +1,17 @@
-package com.example.walmartrviewassessment.ui
+package com.example.walmartrviewassessment.ui.country
 
-import com.example.walmartrviewassessment.R
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.walmartrviewassessment.R
 import com.example.walmartrviewassessment.data.model.Country
 
-class CountryAdapter(private val countries: List<Country>) :
-    RecyclerView.Adapter<CountryAdapter.CountryViewHolder>() {
+class CountryAdapter :
+    ListAdapter<Country, CountryAdapter.CountryViewHolder>(CountryDiffCallback()) {
 
     class CountryViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val nameRegion: TextView = view.findViewById(R.id.tvNameRegion)
@@ -24,11 +26,17 @@ class CountryAdapter(private val countries: List<Country>) :
     }
 
     override fun onBindViewHolder(holder: CountryViewHolder, position: Int) {
-        val country = countries[position]
-        holder.nameRegion.text = "${country.name}, ${country.region}"
+        val country = getItem(position)
+        "${country.name}, ${country.region}".also { holder.nameRegion.text = it }
         holder.code.text = country.code
         holder.capital.text = country.capital
     }
 
-    override fun getItemCount() = countries.size
+    class CountryDiffCallback : DiffUtil.ItemCallback<Country>() {
+        override fun areItemsTheSame(oldItem: Country, newItem: Country): Boolean =
+            oldItem.code == newItem.code
+
+        override fun areContentsTheSame(oldItem: Country, newItem: Country): Boolean =
+            oldItem == newItem
+    }
 }

@@ -11,6 +11,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.walmartrviewassessment.R
+import com.example.walmartrviewassessment.ui.country.CountryAdapter
+import com.example.walmartrviewassessment.ui.country.CountryViewModel
 
 class MainActivity : AppCompatActivity() {
 
@@ -28,6 +30,9 @@ class MainActivity : AppCompatActivity() {
 
         viewModel = ViewModelProvider(this)[CountryViewModel::class.java]
 
+        val adapter = CountryAdapter()
+        recyclerView.adapter = adapter
+
         viewModel.countries.observe(this) { countries ->
             if (countries.isEmpty()) {
                 recyclerView.visibility = View.GONE
@@ -35,7 +40,7 @@ class MainActivity : AppCompatActivity() {
             } else {
                 recyclerView.visibility = View.VISIBLE
                 emptyView.visibility = View.GONE
-                recyclerView.adapter = CountryAdapter(countries)
+                adapter.submitList(countries)
             }
         }
 

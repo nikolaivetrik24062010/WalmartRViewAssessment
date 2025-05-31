@@ -1,4 +1,4 @@
-package com.example.walmartrviewassessment.ui
+package com.example.walmartrviewassessment.ui.country
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
